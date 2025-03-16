@@ -8,6 +8,7 @@ import {title, description} from "./data/block1";
 import {leftImage, rightImage, title2, survivalItems, survivalHeading, paragraphs} from "./data/block2";
 import {block3Data} from "./data/block3";
 import {block4Data} from "./data/block4";
+import {block5Data} from "./data/block5";
 
 function App() {
 console.log(title2, '!!!')
@@ -24,7 +25,7 @@ console.log(title2, '!!!')
         />
         <Block3 data={block3Data}/>
         <Block4 block4Data={block4Data} />
-        <Block5 />
+        <Block5 block5Data={block5Data}/>
     </div>
   );
 }

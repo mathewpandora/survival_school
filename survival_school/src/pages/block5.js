@@ -1,39 +1,14 @@
-'use client';
-import "../App.css";
+// pages/Block5.jsx
 import React from 'react';
+import TopTitle from '../componetns/block5/TopTitle';
+import BottomSignature from '../componetns/block5/BottomSignature';
+import "../App.css";
 
-const Block5 = () => {
+const Block5 = ({block5Data}) => {
     return (
-        <div
-            className="w-full h-screen bg-[#0B1409] flex flex-col justify-between items-center"
-        >
-            {/* Заголовок сверху */}
-            <div
-                className="mt-10 text-white text-center uppercase"
-                style={{
-                    fontFamily: 'Kharkiv Tone',
-                    fontWeight: 400,
-                    fontSize: '60px',
-                    lineHeight: '122%',
-                    letterSpacing: '0%'
-                }}
-            >
-                НАЗАД ДОРОГИ НЕТ
-            </div>
-
-            {/* Подпись снизу */}
-            <div
-                className="mb-10 text-white text-center"
-                style={{
-                    fontFamily: 'Kharkiv Tone',
-                    fontWeight: 400,
-                    fontSize: '38.41px',
-                    lineHeight: '122%',
-                    letterSpacing: '0%'
-                }}
-            >
-                © ШКОЛА ВЫЖИВАНИЯ 2025
-            </div>
+        <div className="w-full h-screen bg-[#0B1409] flex flex-col justify-between items-center">
+            <TopTitle title={block5Data.topTitle} />
+            <BottomSignature signature={block5Data.bottomSignature} />
         </div>
     );
 };
