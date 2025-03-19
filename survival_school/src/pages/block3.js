@@ -10,6 +10,12 @@ const Block3 = ({ data }) => {
         <div className="w-full h-screen relative bg-[#F7F5E9] flex flex-col items-center justify-start pt-10">
             <ImageGallery imagesAPI={imagesAPI} limit={limit} />
             <GalleryTitle title={title} />
+
+            {/* Добавляем SVG линию */}
+            <div className="my-4">
+                <img src="Vector 3.svg" alt="Line" className="w-full" />
+            </div>
+
             <BottomBlock bottomText={bottomText} buttonText={buttonText} />
         </div>
     );

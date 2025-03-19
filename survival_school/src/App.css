@@ -12,6 +12,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Mr. Lonely";
+  src: url("MrLonely.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   font-family: 'KharivTone', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
