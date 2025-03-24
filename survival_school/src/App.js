@@ -1,3 +1,4 @@
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Block1 from "./pages/block1";
@@ -12,39 +13,38 @@ import { leftImage, rightImage, title2, survivalItems, survivalHeading, paragrap
 import { block3Data } from "./data/block3";
 import { block4Data } from "./data/block4";
 import { block5Data } from "./data/block5";
-import OverlayText from './componetns/OverlayText';  // Подключаем новый компонент
+import OverlayText from './componetns/OverlayText';
+import { FormProvider } from './context/FormContext';
 
 function App() {
-
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={
-                    <div className="App">
-                        {/* Общий контейнер с позиционированием */}
-                        <div style={{ position: "relative" }}>
-                            <Block1 title={title} description={description} />
-                            {/* Вставляем текст между Block1 и Block2 */}
-                            <OverlayText />
-                            <Block2
-                                leftImage={leftImage}
-                                rightImage={rightImage}
-                                title2={title2}
-                                paragraphs={paragraphs}
-                                survivalHeading={survivalHeading}
-                                survivalItems={survivalItems}
-                            />
+        <FormProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={
+                        <div className="App">
+                            <div style={{ position: "relative" }}>
+                                <Block1 title={title} description={description} />
+                                <OverlayText />
+                                <Block2
+                                    leftImage={leftImage}
+                                    rightImage={rightImage}
+                                    title2={title2}
+                                    paragraphs={paragraphs}
+                                    survivalHeading={survivalHeading}
+                                    survivalItems={survivalItems}
+                                />
+                            </div>
+                            <Block3 data={block3Data} />
+                            <Block4 block4Data={block4Data} />
+                            <Block5 block5Data={block5Data} />
                         </div>
-
-                        <Block3 data={block3Data} />
-                        <Block4 block4Data={block4Data} />
-                        <Block5 block5Data={block5Data} />
-                    </div>
-                } />
-                <Route path="/apply" element={<Questions />} />
-                <Route path="/form" element={<UserForm />} />
-            </Routes>
-        </Router>
+                    } />
+                    <Route path="/apply" element={<Questions />} />
+                    <Route path="/form" element={<UserForm />} />
+                </Routes>
+            </Router>
+        </FormProvider>
     );
 }
 

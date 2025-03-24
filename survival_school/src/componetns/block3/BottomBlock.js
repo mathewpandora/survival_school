@@ -5,15 +5,14 @@ const BottomBlock = ({ bottomText, buttonText }) => {
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/apply'); // Замените '/apply' на нужный URL
+        navigate('/apply');
     };
 
     return (
-        <div className="absolute bottom-4 w-full flex flex-col items-center space-y-2">
+        <div className="absolute bottom-4 w-full flex flex-col items-center space-y-2 font-['KharivTone']">
             <div
                 className="text-[#78845F] text-center"
                 style={{
-                    fontFamily: 'Kharkiv Tone',
                     fontWeight: 400,
                     fontSize: '32px',
                     letterSpacing: '0%',
