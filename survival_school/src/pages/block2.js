@@ -13,18 +13,17 @@ const Block2 = ({
                     survivalItems,
                 }) => {
     return (
-        <div className='w-full min-h-screen relative bg-[#010f01] overflow-auto pb-10 md:pb-0'>
-            {/* SVG с анимацией вращения */}
-            <div className='absolute bottom-4 right-4 md:bottom-8 md:right-8 z-10'>
+        <div className='w-full min-h-screen relative bg-[#010f01] overflow-auto pb-10 lg:pb-0'>
+            {/* SVG с анимацией вращения (только на lg и выше) */}
+            <div className='hidden lg:block absolute right-10 md:bottom-6 lg:bottom-2 lg:right-60 z-10'>
                 <img
                     src="Linked Path Group.svg"
                     alt="Декоративный элемент"
-                    className='w-40 h-40 md:w-14 md:h-14 animate-spin-slow'
+                    className='w-13 h-13 lg:w-60 lg:h-60 animate-spin-slow'
                 />
             </div>
 
-            {/* Остальной код без изменений */}
-            <div className='md:hidden flex flex-col items-center'>
+            <div className='lg:hidden flex flex-col items-center'>
                 <div className='flex justify-center gap-4 w-full my-4'>
                     <ImageBlock
                         src={leftImage.src}
@@ -46,13 +45,13 @@ const Block2 = ({
                     />
                 </div>
 
-                <div className='w-full'>
+                <div className='w-full flex flex-col space-y-10'>
                     <ProjectText title2={title2} paragraphs={paragraphs} />
                     <SurvivalSchool heading={survivalHeading} items={survivalItems} />
                 </div>
             </div>
 
-            <div className='hidden md:block h-full'>
+            <div className='hidden lg:block h-full'>
                 <ImageBlock
                     src={leftImage.src}
                     alt={leftImage.alt}
@@ -75,8 +74,10 @@ const Block2 = ({
                     }}
                 />
 
-                <ProjectText title2={title2} paragraphs={paragraphs} />
-                <SurvivalSchool heading={survivalHeading} items={survivalItems} />
+                <div className='w-full flex flex-col space-y-10'>
+                    <ProjectText title2={title2} paragraphs={paragraphs} />
+                    <SurvivalSchool heading={survivalHeading} items={survivalItems} />
+                </div>
             </div>
 
             {/* Добавляем стили для анимации в глобальные стили */}

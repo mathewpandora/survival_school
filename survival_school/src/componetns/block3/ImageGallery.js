@@ -14,16 +14,15 @@ const ImageGallery = ({ imagesAPI }) => {
     }, [imagesAPI]);
 
     return (
-        <div className="w-full px-[5%] overflow-hidden">
-            <div className="flex space-x-4 overflow-x-auto">
+        <div className="w-full overflow-hidden">
+            <div className="flex space-x-2 lg:space-x-6 overflow-x-auto">
                 {images.length > 0 ? (
                     images.map((image) => (
                         <img
                             key={image.id}
                             src={image.image}
                             alt="Gallery Image"
-                            className="h-[80%] object-cover rounded-[12px]"
-                            style={{ width: `${Math.random() * (60 - 40) + 40}vw` }} // Увеличенные размеры от 40vw до 60vw
+                            className="lg:h-[80%] lg:w-[50vw] object-cover rounded-[20px] md:rounded-[40px] lg:rounded-[50px]"
                         />
                     ))
                 ) : (

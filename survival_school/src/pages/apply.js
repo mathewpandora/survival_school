@@ -133,6 +133,9 @@ const Questions = () => {
                                 <option value="Финансовый Университет">
                                     Финансовый Университет
                                 </option>
+                                <option value="МГУУ">
+                                    МГУУ
+                                </option>
                             </select>
                             {errors.university && (
                                 <p className="text-red-500 text-sm">{errors.university}</p>
@@ -160,6 +163,7 @@ const Questions = () => {
                                     <option value="ВШП">ВШП</option>
                                     <option value="ВШМ">ВШМ</option>
                                     <option value="ИПАМ">ИПАМ</option>
+                                    <option value="ВШФ">ВШФ</option>
                                     <option value="ФБ “Капитаны”">ФБ “Капитаны”</option>
                                     <option value="СФТМ “ВШ Форсайт”">
                                         СФТМ “ВШ Форсайт”
@@ -271,11 +275,12 @@ const Questions = () => {
                         {/* Google Email */}
                         <div className="space-y-2">
                             <label className="block text-lg font-semibold text-white">
-                                Google Email:
+                                Google Email: 
                             </label>
                             <input
                                 type="email"
                                 name="google_email"
+                                placeholder="...@gmail.com"
                                 value={formData.google_email || ""}
                                 onChange={handleAnswerChange}
                                 className="w-full px-4 py-2 border rounded-lg bg-white text-black"

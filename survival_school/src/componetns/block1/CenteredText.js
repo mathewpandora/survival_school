@@ -13,7 +13,7 @@ const CenteredText = ({ title, description }) => {
             }}
         >
             <h1 className="text-[40px] md:text-[70px] leading-tight">{title}</h1>
-            <p className="text-[20px] md:text-[40px] mt-2">{description}</p>
+            <p className="text-[20px] md:text-[40px] mt-2" style={{lineHeight: 1.2}}>{description}</p>
         </div>
     );
 };

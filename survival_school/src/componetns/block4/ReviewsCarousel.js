@@ -12,7 +12,7 @@ const ReviewsCarousel = () => {
     }, []);
 
     return (
-        <div className="absolute top-[50%] w-full overflow-hidden px-4 max-w-screen-xl mx-auto">
+        <div className="md:absolute md:top-[50%] py-[15%] md:py-0 w-full overflow-hidden mx-auto">
             <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
                 {reviews.length > 0 ? (
                     reviews.map((review) => (

@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Block1 from "./pages/block1";
@@ -15,6 +14,7 @@ import { block4Data } from "./data/block4";
 import { block5Data } from "./data/block5";
 import OverlayText from './componetns/OverlayText';
 import { FormProvider } from './context/FormContext';
+import DinoGame from "./pages/game";
 
 function App() {
     return (
@@ -38,6 +38,11 @@ function App() {
                             <Block3 data={block3Data} />
                             <Block4 block4Data={block4Data} />
                             <Block5 block5Data={block5Data} />
+
+                            {/* Убираем белые отступы */}
+                            <div className="game-container">
+                                <DinoGame />
+                            </div>
                         </div>
                     } />
                     <Route path="/apply" element={<Questions />} />

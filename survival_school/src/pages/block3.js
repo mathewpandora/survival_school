@@ -7,7 +7,7 @@ const Block3 = ({ data }) => {
     const { imagesAPI, limit, title, bottomText, buttonText } = data;
 
     return (
-        <div className="w-full h-screen relative bg-[#F7F5E9] flex flex-col items-center justify-start pt-10">
+        <div className="w-full h-auto lg:h-screen relative bg-[#F7F5E9] flex flex-col items-center justify-start pt-10 pb-10">
             <ImageGallery imagesAPI={imagesAPI} limit={limit} />
             <GalleryTitle title={title} />
 

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContext } from "../context/FormContext";
 
@@ -6,22 +6,32 @@ const UserForm = () => {
     const { formData, setFormData } = useContext(FormContext);
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
     const fieldQuestions = {
         reasons: "Назови причину, почему ты решил подать анкету на Школу Выживания?",
         expectations: "Как ты представляешь себе этот проект? Какие есть ожидания от него?",
         team_experience: "Опиши свой опыт работы в команде:",
         teamwork: "Что для тебя важно при работе в команде и что недопустимо?",
+        team_qualities: "Опиши 3 своих качества, которые могут помочь команде, и 3 качества, которые, наоборот, могут ей помешать",
         physical_training: "Оцени свою физическую подготовку (от 1 до 10)",
         health_problems: "Есть ли у тебя какие-либо проблемы со здоровьем?",
         hike_experience: "Есть ли у тебя походный опыт? Если да, опиши его.",
         priorities: "Представь, что ты стал/а участником проекта, расставь по приоритетам всю свою активность (учеба, хобби, проекты, работа и т. д.)",
         curation: "Проходишь ли ты сейчас отбор на кураторство? Если да, то напиши, как будешь совмещать его с ШВ.",
         rejection: "Что тебя может заставить отказаться от участия в Школе Выживания?",
-        team_qualities: "Опиши 3 своих качества, которые могут помочь команде, и 3 качества, которые, наоборот, могут ей помешать",
         unusual_dish: "Какое необычное блюдо ты бы хотел приготовить на ШВ?",
     };
+
+    useEffect(() => {
+        if (showSuccessPopup) {
+            const timer = setTimeout(() => {
+                setShowSuccessPopup(false);
+                navigate("/");
+            }, 2000);
+            return () => clearTimeout(timer);
+        }
+    }, [showSuccessPopup, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -60,7 +70,6 @@ const UserForm = () => {
             const responseData = await response.json();
 
             if (!response.ok) {
-                // Проверяем наличие ошибок о существующей анкете
                 if (responseData.vk || responseData.phone_number) {
                     let errorMessage = "Ошибка при создании анкеты:\n";
 
@@ -77,12 +86,10 @@ const UserForm = () => {
                 throw new Error(`Ошибка ${response.status}: ${response.statusText}`);
             }
 
-            setSuccess("Данные успешно отправлены!");
-            alert("Данные успешно отправлены!");
+            setShowSuccessPopup(true);
         } catch (err) {
             console.error("Ошибка при отправке данных:", err);
 
-            // Не показываем дублирующее сообщение, если уже был alert
             if (!err.message.includes("Анкета с такими данными уже существует")) {
                 setError("Ошибка отправки данных. Попробуйте ещё раз.");
                 alert("Ошибка отправки данных. Попробуйте ещё раз.");
@@ -137,7 +144,6 @@ const UserForm = () => {
                             </div>
                         ))}
                         {error && <p className="text-red-500 text-sm">{error}</p>}
-                        {success && <p className="text-green-500 text-sm">{success}</p>}
                         <div className="flex justify-between">
                             <button
                                 type="button"
@@ -156,6 +162,15 @@ const UserForm = () => {
                     </form>
                 </div>
             </div>
+
+            {showSuccessPopup && (
+                <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-70">
+                    <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+                        <h3 className="text-2xl font-bold text-green-600 mb-4">Успешно!</h3>
+                        <p className="text-lg">Данные успешно отправлены!</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

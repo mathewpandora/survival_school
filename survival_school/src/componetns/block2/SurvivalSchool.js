@@ -1,40 +1,39 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const BottomBlock = ({ bottomText, buttonText }) => {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/apply');
-    };
-
+const SurvivalSchool = ({ heading, items }) => {
     return (
-        <div className="absolute bottom-4 w-full flex flex-col items-center space-y-2">
-            {/* Текст с такими же стилями, как в SurvivalSchool */}
-            <div
-                className="text-[#78845F] text-center uppercase"
+        <div className="relative lg:absolute top-[40%] lg:left-[calc(23vw+20px)] inline-block text-[#C9C9C9] px-[5%]">
+            <p
+                className="text-left lg:text-[38.28px] text-[24px]"
+
                 style={{
-                    fontFamily: 'Kharkiv Tone',
+                    // fontFamily: 'Kharkiv Tone',  // добавляем шрифт
                     fontWeight: 400,
-                    fontSize: 'clamp(24px, 5vw, 32px)',
+                    // fontSize: '38.28px',
                     lineHeight: '100%',
-                    letterSpacing: '0%'
+                    letterSpacing: '0%',  // или '0' — по сути одно и то же
+                    textTransform: 'uppercase',
+                    color: '#C9C9C9',
+                }}
+                dangerouslySetInnerHTML={{ __html: heading }}
+            />
+            <ul
+                className="text-left mt-5 list-disc list-inside lg:text-[18px] text-[16px]"
+                style={{
+                    fontWeight: 400,
+                    // fontSize: '19.53px',
+                    lineHeight: '25px',
+                    letterSpacing: '0',
+                    color: '#C9C9C9',
+                    wordBreak: 'break-word',
                 }}
             >
-                {bottomText}
-            </div>
-
-            {/* Кнопка (оставлена без изменений) */}
-            <div className="w-full flex justify-center">
-                <button
-                    onClick={handleClick}
-                    className="px-8 py-4 border-2 border-[#78845F] text-[#78845F] rounded-[25px] text-sm uppercase hover:bg-[#78845F] hover:text-white transition duration-300"
-                >
-                    {buttonText}
-                </button>
-            </div>
+                {items.map((item, index) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
         </div>
     );
 };
 
-export default BottomBlock;
+export default SurvivalSchool;
